@@ -1,5 +1,6 @@
 import streamlit as st
-from streamlit_audio_blob import audio_reactive_blob
+from streamlit_audio_blob.streamlit_audio_blob import audio_reactive_blob
+
 
 st.set_page_config(
     page_title="Alzheimer's Screening Tool",
