@@ -1,6 +1,4 @@
 import streamlit as st
-from streamlit_audio_blob.streamlit_audio_blob import audio_reactive_blob
-
 
 st.set_page_config(
     page_title="Alzheimer's Screening Tool",
@@ -22,12 +20,14 @@ col1, col2 = st.columns([3, 1])
 
 with col1:
     st.subheader("Voice Visualization")
-    mic_active = audio_reactive_blob(key="audio_blob")
+    # Placeholder for the audio reactive component
+    st.info("Audio visualization component will appear here when deployed correctly.")
     
-    if mic_active:
+    # Temporary button to simulate microphone activation
+    if st.button("Simulate Microphone Activation"):
         st.success("Microphone is active! Speak to see the visualization respond.")
     else:
-        st.info("Click the microphone button to start.")
+        st.info("Click the button to simulate microphone activation.")
 
 with col2:
     st.subheader("About")
