@@ -1,106 +1,77 @@
-# Streamlit Audio Reactive Blob
+# Audio Reactive Blob Visualization
 
-A Streamlit component that provides an audio-reactive visualization responding to microphone input, designed with accessibility features for elderly users. This component is specifically adapted for Alzheimer's screening applications.
+This Streamlit application creates an interactive audio-reactive blob visualization that responds to microphone input, similar to the visualization seen in ChatGPT's voice mode.
 
 ## Features
 
-- **Audio-reactive visualization** that responds to microphone input
-- **Material Design adaptations** specifically for elderly users:
-  - Larger text and controls
-  - High contrast colors
-  - Simplified interface
-  - Gentle animations
-  - Clear instructions
-- **Accessibility considerations**:
-  - Adjustable sensitivity
-  - Visual feedback for microphone status
-  - Help section with simple instructions
-  - Error handling with clear messages
+- Real-time audio processing using browser APIs
+- Smooth, organic blob visualization that reacts to sound
+- Color and shape changes based on audio characteristics
+- Simple, intuitive interface with fullscreen support
+- Works on desktop and mobile browsers
+
+## Demo
+
+When you speak into your microphone, the blue blob will change shape, size, and color based on your voice. The visualization responds to:
+
+- Volume (overall amplitude)
+- Frequency distribution
+- Pitch variations
+- Speech patterns
+
+## Requirements
+
+- Python 3.7+
+- Streamlit
+- A modern web browser with microphone access
 
 ## Installation
 
-### Option 1: Install from GitHub
-
+1. Clone this repository:
 ```bash
-pip install git+https://github.com/yourusername/streamlit-audio-blob.git
+git clone https://github.com/yourusername/audio-reactive-blob.git
+cd audio-reactive-blob
 ```
 
-### Option 2: Local Installation
-
-1. Clone the repository:
+2. Install the required packages:
 ```bash
-git clone https://github.com/yourusername/streamlit-audio-blob.git
-cd streamlit-audio-blob
+pip install -r requirements.txt
 ```
 
-2. Install the package:
+3. Run the Streamlit app:
 ```bash
-pip install -e .
+streamlit run app.py
 ```
 
-## Usage
+## Deployment on Streamlit Cloud
 
-```python
-import streamlit as st
-from streamlit_audio_blob import audio_reactive_blob
+This application can be easily deployed on [Streamlit Cloud](https://streamlit.io/cloud):
 
-st.title("Voice Visualization")
+1. Fork this repository to your GitHub account
+2. Log in to Streamlit Cloud
+3. Create a new app and select your forked repository
+4. Set the main file path to `app.py`
+5. Deploy!
 
-# Use the component
-mic_active = audio_reactive_blob(key="audio_blob")
+## How It Works
 
-if mic_active:
-    st.success("Microphone is active! Speak to see the visualization respond.")
-else:
-    st.info("Click the microphone button to start.")
-```
+The application uses:
 
-## Development
+- Streamlit for the Python web application framework
+- streamlit-javascript for browser integration
+- p5.js for the visualization rendering
+- Web Audio API for microphone access and audio processing
 
-### Frontend Development
+The blob visualization is created using perlin noise to generate organic shapes that respond to audio input. The audio is analyzed in real-time to extract features like volume, frequency distribution, and pitch, which are then used to control various aspects of the visualization.
 
-The component uses React with Material-UI and p5.js for the visualization. To develop the frontend:
+## Browser Permissions
 
-1. Navigate to the frontend directory:
-```bash
-cd streamlit_audio_blob/frontend
-```
-
-2. Install dependencies:
-```bash
-npm install
-```
-
-3. Start the development server:
-```bash
-npm start
-```
-
-4. Build the frontend:
-```bash
-npm run build
-```
-
-### Python Component Development
-
-The Streamlit component is defined in `streamlit_audio_blob/__init__.py`. You can modify this file to change the component's API.
-
-## Building the Component
-
-To build the component for distribution:
-
-1. Build the frontend:
-```bash
-cd streamlit_audio_blob/frontend
-npm install
-npm run build
-```
-
-2. Install the Python package:
-```bash
-pip install -e .
-```
+When you first run the application, your browser will ask for permission to access your microphone. You need to allow this for the visualization to work properly.
 
 ## License
 
 MIT
+
+## Credits
+
+This project was inspired by the audio visualizations in ChatGPT's voice mode and adapted for Streamlit.
